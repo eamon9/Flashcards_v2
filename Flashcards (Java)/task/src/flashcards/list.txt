@@ -1,0 +1,7 @@
+card1,getter
+card2,setter
+c1,01
+c2,02
+c3,03
+1,2
+2,22
