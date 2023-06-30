@@ -24,48 +24,32 @@ public class App {
 
         chooseAction();
 
-        System.out.println("Input the number of cards:");
-        int numberOfCards = input.nextInt();
-        input.nextLine();
-
-        addCards(numberOfCards);
+        addCards();
         checkCards();
     }
 
     public void chooseAction() {
-        System.out.println("Input the action (add, remove, import, export, ask, exit):");
-        String action = input.nextLine();
-        boolean noSuchAction = true;
-        while (noSuchAction) {
+        while (true) {
             System.out.println("Input the action (add, remove, import, export, ask, exit):");
-            action = input.nextLine();
-            noSuchAction = false;
+            String action = input.nextLine();
+
+            switch (action) {
+                case "add" -> addCards();
+                case "remove" -> System.out.println("remove");
+                case "import" -> System.out.println("import");
+                case "export" -> System.out.println("export");
+                case "ask" -> checkCards();
+                case "exit" -> System.out.println("exit");
+            }
         }
-        switch (action) {
-            case "add" :
-                System.out.println("add");;
-                break;
-            case "remove" :
-                System.out.println("remove");
-                break;
-            case "import" :
-                System.out.println("import");
-                break;
-            case "export" :
-                System.out.println("export");
-                break;
-            case "ask" :
-                System.out.println("ask");
-                break;
-            case "exit" :
-                System.out.println("exit");
-                break;
-            default:
-                System.out.println("NO NO NO");
-        }
+
     }
 
-    public void addCards(int numberOfCards) {
+    public void addCards() {
+        System.out.println("Input the number of cards:");
+        int numberOfCards = input.nextInt();
+        input.nextLine();
+
         for (int i = 0; i < numberOfCards; i++) {
             System.out.println("Card #" + (i + 1) + ":");
             String term = input.nextLine();
@@ -192,7 +176,7 @@ public class App {
             }
             System.out.println("FlashCard records loaded successfully.\n");
         } catch (IOException e) {
-            // Ignore if the file doesn't exist or any other read error occurs
+
         }
     }
 
@@ -212,7 +196,7 @@ public class App {
     void printFlashCardRecords(List<FlashCards> flashCardsList) {
         System.out.println("Registered FlashCards:");
         for (FlashCards flashCard : flashCardsList) {
-            System.out.println("Term: " + flashCard.getTERM() + " Definition: " + flashCard.getDEFINITION());
+            System.out.println("Term: \"" + flashCard.getTERM() + "\" Definition: \"" + flashCard.getDEFINITION() + "\"");
         }
     }
 }
