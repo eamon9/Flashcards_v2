@@ -10,7 +10,7 @@ public class App {
     List<FlashCards> flashCardsList;
 
     // to find where is this txt file go to IdeaProjects\Flashcards (Java)\[txt file]
-    final String FILE_PATH = "listNew.txt"; // Here is some comment =D
+    final String FILE_PATH = "listNew.txt";
 
     App() {
         flashCardsList = new ArrayList<>();
