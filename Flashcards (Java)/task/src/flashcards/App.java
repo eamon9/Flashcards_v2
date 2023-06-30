@@ -6,29 +6,24 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    Scanner input = new Scanner(System.in);
-    List<FlashCards> flashCardsList;
+    private Scanner input = new Scanner(System.in);
+    private List<FlashCards> flashCardsList;
 
     /*final String FILE_PATH =
             "C:\\Users\\imants.brokans\\IdeaProjects\\Flashcards (Java)\\" +
             "Flashcards (Java)\\task\\src\\flashcards\\files\\list.txt";*/
 
-    final String FILE_PATH =
+    private final String FILE_PATH =
             "listNew.txt";
-    App() {
+    public App() {
         flashCardsList = new ArrayList<>();
     }
 
     public void run() {
-        loadFlashCardRecords(flashCardsList);
-
         chooseAction();
-
-        addCards();
-        checkCards();
     }
 
-    public void chooseAction() {
+    private void chooseAction() {
         while (true) {
             System.out.println("Input the action (add, remove, import, export, ask, exit):");
             String action = input.nextLine();
@@ -36,7 +31,7 @@ public class App {
             switch (action) {
                 case "add" -> addCards();
                 case "remove" -> System.out.println("remove");
-                case "import" -> System.out.println("import");
+                case "import" -> loadFlashCardRecords(flashCardsList);
                 case "export" -> System.out.println("export");
                 case "ask" -> checkCards();
                 case "exit" -> System.out.println("exit");
@@ -45,7 +40,7 @@ public class App {
 
     }
 
-    public void addCards() {
+    private void addCards() {
         System.out.println("Input the number of cards:");
         int numberOfCards = input.nextInt();
         input.nextLine();
@@ -82,7 +77,7 @@ public class App {
         }
     }
 
-    public void checkCards() {
+    private void checkCards() {
         for (int i = 0; i < flashCardsList.size(); i++) {
             String tempTerm = flashCardsList.get(i).getTERM();
             System.out.println("Print the definition of \"" + tempTerm + "\":");
@@ -122,7 +117,7 @@ public class App {
         }
     }
 
-    boolean checkIfTermExist(String term, List<FlashCards> flashCardsList) {
+    private boolean checkIfTermExist(String term, List<FlashCards> flashCardsList) {
         for (FlashCards flashCard : flashCardsList) {
             if (flashCard.getTERM().equalsIgnoreCase(term)) {
                 return true;
@@ -131,7 +126,7 @@ public class App {
         return false;
     }
 
-    boolean checkIfDefinitionExist(String definition, List<FlashCards> flashCardsList) {
+    private boolean checkIfDefinitionExist(String definition, List<FlashCards> flashCardsList) {
         for (FlashCards flashCard : flashCardsList) {
             if (flashCard.getDEFINITION().equalsIgnoreCase(definition)) {
                 return true;
@@ -140,7 +135,7 @@ public class App {
         return false;
     }
 
-    static boolean checkIfAnswerIsCorrect(String term, String answer, List<FlashCards> flashCardsList) {
+    private boolean checkIfAnswerIsCorrect(String term, String answer, List<FlashCards> flashCardsList) {
 
         int indexOfTerm = -1;
         for (int i = 0; i < flashCardsList.size(); i++) {
@@ -153,7 +148,7 @@ public class App {
         return flashCardsList.get(indexOfTerm).getDEFINITION().equalsIgnoreCase(answer);
     }
 
-    static int findDefinitionIndexByAnswer(List<FlashCards> flashCardsList, String answer) {
+    private int findDefinitionIndexByAnswer(List<FlashCards> flashCardsList, String answer) {
         for (int i = 0; i < flashCardsList.size(); i++) {
             FlashCards flashCard = flashCardsList.get(i);
             if (flashCard.getDEFINITION().equalsIgnoreCase(answer)) {
@@ -163,7 +158,7 @@ public class App {
         return -1;
     }
 
-    void loadFlashCardRecords(List<FlashCards> flashCardsList) {
+    private void loadFlashCardRecords(List<FlashCards> flashCardsList) {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -176,11 +171,11 @@ public class App {
             }
             System.out.println("FlashCard records loaded successfully.\n");
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
     }
 
-    void saveFlashCardRecords(List<FlashCards> flashCardsList) {
+    private void saveFlashCardRecords(List<FlashCards> flashCardsList) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
             for (FlashCards flashCard : flashCardsList) {
                 writer.write(flashCard.getTERM() + ",");
@@ -193,7 +188,7 @@ public class App {
         }
     }
 
-    void printFlashCardRecords(List<FlashCards> flashCardsList) {
+    private void printFlashCardRecords(List<FlashCards> flashCardsList) {
         System.out.println("Registered FlashCards:");
         for (FlashCards flashCard : flashCardsList) {
             System.out.println("Term: \"" + flashCard.getTERM() + "\" Definition: \"" + flashCard.getDEFINITION() + "\"");
