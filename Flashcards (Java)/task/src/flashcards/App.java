@@ -9,9 +9,12 @@ public class App {
     Scanner input = new Scanner(System.in);
     List<FlashCards> flashCardsList;
 
-    // to find where is this txt file go to IdeaProjects\Flashcards (Java)\[txt file]
-    final String FILE_PATH = "listNew.txt";
+    /*final String FILE_PATH =
+            "C:\\Users\\imants.brokans\\IdeaProjects\\Flashcards (Java)\\" +
+            "Flashcards (Java)\\task\\src\\flashcards\\files\\list.txt";*/
 
+    final String FILE_PATH =
+            "listNew.txt";
     App() {
         flashCardsList = new ArrayList<>();
     }
@@ -39,13 +42,26 @@ public class App {
             noSuchAction = false;
         }
         switch (action) {
-            case "add" -> System.out.println("add");
-            case "remove" -> System.out.println("remove");
-            case "import" -> System.out.println("import");
-            case "export" -> System.out.println("export");
-            case "ask" -> System.out.println("ask");
-            case "exit" -> System.out.println("exit");
-            default -> System.out.println("NO NO NO");
+            case "add" :
+                System.out.println("add");;
+                break;
+            case "remove" :
+                System.out.println("remove");
+                break;
+            case "import" :
+                System.out.println("import");
+                break;
+            case "export" :
+                System.out.println("export");
+                break;
+            case "ask" :
+                System.out.println("ask");
+                break;
+            case "exit" :
+                System.out.println("exit");
+                break;
+            default:
+                System.out.println("NO NO NO");
         }
     }
 
@@ -196,7 +212,7 @@ public class App {
     void printFlashCardRecords(List<FlashCards> flashCardsList) {
         System.out.println("Registered FlashCards:");
         for (FlashCards flashCard : flashCardsList) {
-            System.out.println("Term: \"" + flashCard.getTERM() + "\" Definition: \"" + flashCard.getDEFINITION() + "\"");
+            System.out.println("Term: " + flashCard.getTERM() + " Definition: " + flashCard.getDEFINITION());
         }
     }
 }
