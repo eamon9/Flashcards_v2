@@ -250,7 +250,7 @@ files:
 - name: src/flashcards/App.java
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/projects/44/stages/235/implement#comment
+feedback_link: https://hyperskill.org/learn/step/5346#comment
 status: Solved
 feedback:
   message: Congratulations!

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6ece4ae-33a0-4371-8e12-68da69a1741d" name="Changes" comment="Add neccesery files and some changes on code">
+    <list default="true" id="f6ece4ae-33a0-4371-8e12-68da69a1741d" name="Changes" comment="Change access modifiers mostly to private">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flashcards (Java)/task/src/flashcards/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Flashcards (Java)/task/src/flashcards/App.java" afterDir="false" />
     </list>
@@ -169,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688121336622</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Change access modifiers mostly to private">
+      <option name="closed" value="true" />
+      <created>1688122401787</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1688122401787</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +195,7 @@
     <MESSAGE value="Checking Commit saccess" />
     <MESSAGE value="Checking Commit saccess ver2" />
     <MESSAGE value="Add neccesery files and some changes on code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add neccesery files and some changes on code" />
+    <MESSAGE value="Change access modifiers mostly to private" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change access modifiers mostly to private" />
   </component>
 </project>

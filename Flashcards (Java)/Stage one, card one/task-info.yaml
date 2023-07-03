@@ -41,7 +41,7 @@ files:
     \     \n                    return CheckResult.correct();\n                  \
     \  \n                })\n        );\n    }\n    \n}\n"
   learner_created: false
-feedback_link: https://hyperskill.org/projects/44/stages/232/implement#comment
+feedback_link: https://hyperskill.org/learn/step/5343#comment
 status: Solved
 feedback:
   message: Congratulations!

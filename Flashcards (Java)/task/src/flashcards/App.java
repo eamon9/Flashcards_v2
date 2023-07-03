@@ -6,15 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    private Scanner input = new Scanner(System.in);
-    private List<FlashCards> flashCardsList;
-
-    /*final String FILE_PATH =
-            "C:\\Users\\imants.brokans\\IdeaProjects\\Flashcards (Java)\\" +
-            "Flashcards (Java)\\task\\src\\flashcards\\files\\list.txt";*/
-
-    private final String FILE_PATH =
-            "listNew.txt";
+    private final Scanner input = new Scanner(System.in);
+    private final List<FlashCards> flashCardsList;
+    private final String FILE_PATH = "listNew.txt";
     public App() {
         flashCardsList = new ArrayList<>();
     }
@@ -30,11 +24,11 @@ public class App {
 
             switch (action) {
                 case "add" -> addCards();
-                case "remove" -> System.out.println("remove");
-                case "import" -> loadFlashCardRecords(flashCardsList);
+                case "remove" -> removeCard();
+                case "import" -> importCards(); // loadFlashCardRecords(flashCardsList)
                 case "export" -> System.out.println("export");
                 case "ask" -> checkCards();
-                case "exit" -> System.out.println("exit");
+                case "exit" -> exitApp();
             }
         }
 
@@ -74,6 +68,20 @@ public class App {
             saveFlashCardRecords(flashCardsList);
 
             printFlashCardRecords(flashCardsList);
+        }
+    }
+
+    private void removeCard() {
+        System.out.println("Which card?");
+        String card = input.nextLine();
+        int cardIndex = findTermIndexByAnswer(flashCardsList, card);
+
+        if (cardIndex != -1) {
+            flashCardsList.remove(cardIndex);
+            saveFlashCardRecords(flashCardsList);
+            System.out.println("The card has been removed.");
+        } else {
+            System.out.println("Can't remove \"" + card + "\": there is no such card.");
         }
     }
 
@@ -117,6 +125,24 @@ public class App {
         }
     }
 
+    private void importCards() {
+        System.out.println("File name:");
+        String fileName = input.nextLine();
+        File file = new File(fileName);
+
+        if (file.exists()) {
+            System.out.println("File not found");
+        } else {
+            int numberOfCards = 0;
+            System.out.println(numberOfCards + " cards have been loaded.");
+        }
+    }
+
+    private void exitApp() {
+        System.out.println("Bye bye!");
+        System.exit(0);
+    }
+
     private boolean checkIfTermExist(String term, List<FlashCards> flashCardsList) {
         for (FlashCards flashCard : flashCardsList) {
             if (flashCard.getTERM().equalsIgnoreCase(term)) {
@@ -158,6 +184,16 @@ public class App {
         return -1;
     }
 
+    private int findTermIndexByAnswer(List<FlashCards> flashCardsList, String answer) {
+        for (int i = 0; i < flashCardsList.size(); i++) {
+            FlashCards flashCard = flashCardsList.get(i);
+            if (flashCard.getTERM().equalsIgnoreCase(answer)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     private void loadFlashCardRecords(List<FlashCards> flashCardsList) {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
@@ -181,7 +217,7 @@ public class App {
                 writer.write(flashCard.getTERM() + ",");
                 writer.write(flashCard.getDEFINITION() + "\n");
             }
-            System.out.println("FlashCard records saved successfully.\n");
+            //System.out.println("FlashCard records saved successfully.\n");
         } catch (IOException e) {
             System.out.println("Error occurred while saving flashCard records.");
             e.printStackTrace();
